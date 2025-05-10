@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/Spotify_Primary_Logo_RGB_Green.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Findnex Spotify</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1db954 0%, #191414 100%);
+        font-family: "Inter", Arial, sans-serif;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.5s;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+      .header img {
+        width: 48px;
+        height: 48px;
+      }
+      .header-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(25, 20, 20, 0.2);
+      }
+      #root {
+        width: 100%;
+        max-width: 480px;
+        min-height: 320px;
+        background: rgba(25, 20, 20, 0.82);
+        border-radius: 18px;
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+        padding: 32px 24px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .spinner {
+        border: 4px solid #333;
+        border-top: 4px solid #1db954;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        animation: spin 1s linear infinite;
+        margin: 48px auto 0 auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @media (max-width: 600px) {
+        .header-title {
+          font-size: 1.3rem;
+        }
+        #root {
+          padding: 20px 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="/Spotify_Primary_Logo_RGB_Green.png" alt="Spotify Logo" />
+      <span class="header-title">Findnex Spotify Album</span>
+    </div>
+    <div id="root">
+      <div class="spinner" id="spinner"></div>
+    </div>
+    <span class="footer-text">Made with 💖Music by Ut@2025</span>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const observer = new MutationObserver(() => {
+          const spinner = document.getElementById("spinner");
+          if (spinner) spinner.remove();
+        });
+        observer.observe(document.getElementById("root"), { childList: true });
+      });
+    </script>
+  </body>
+</html>
